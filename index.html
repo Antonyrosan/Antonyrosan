@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rosan A | Cloud & DevOps Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary: #4f46e5;
+      --bg-light: #ffffff;
+      --bg-dark: #0f172a;
+      --text-light: #0f172a;
+      --text-dark: #ffffff;
+      --border-color: #e0e0e0;
+      --border-color-dark: #374151;
+      --skill-bg: #eef1ff;
+      --skill-text: #4f46e5;
+      --skill-bg-dark: #2d3748;
+      --skill-text-dark: #aebefa;
+      --project-card-bg-light: rgba(0, 0, 0, 0.03);
+      --project-card-bg-dark: #1e293b;
+      --architecture-text-light: #555555;
+      --architecture-text-dark: #a0aec0;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-light);
+      color: var(--text-light);
+      transition: all 0.3s ease;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    body.dark {
+      background-color: var(--bg-dark);
+      color: var(--text-dark);
+    }
+
+    body.dark a {
+      color: var(--primary);
+    }
+
+    header {
+      background-color: var(--primary);
+      color: #fff;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    header h1, header p {
+      color: #fff;
+    }
+
+    main {
+      flex: 1;
+      padding-bottom: 2rem;
+    }
+
+    section {
+      padding: 2rem;
+      max-width: 800px;
+      margin: 2rem auto;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, background-color 0.3s;
+    }
+
+    section:hover {
+      transform: translateY(-5px);
+    }
+
+    body.dark section {
+      background: var(--project-card-bg-dark);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+    }
+
+    h2 {
+      margin-bottom: 1rem;
+      color: var(--primary);
+      font-size: 1.8rem;
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 0.5rem;
+    }
+
+    ul {
+      list-style-type: none;
+      padding-left: 0;
+    }
+    ul li {
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    body.dark ul li {
+      color: var(--text-dark);
+    }
+
+    .project-card {
+      background: var(--project-card-bg-light);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      border-left: 4px solid var(--primary);
+      border-radius: 8px;
+      transition: transform 0.3s, background-color 0.3s;
+      position: relative;
+    }
+
+    body.dark .project-card {
+      background: var(--project-card-bg-dark);
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .project-title {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      font-size: 1.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .project-title a {
+      color: var(--primary);
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      transition: color 0.3s;
+    }
+
+    .project-title a:hover {
+      color: #3931a8;
+    }
+
+    .github-icon {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      cursor: pointer;
+    }
+
+    .architecture {
+      margin-top: 0.5rem;
+      font-style: italic;
+      font-size: 0.9rem;
+      color: var(--architecture-text-light);
+      transition: color 0.3s;
+    }
+
+    body.dark .architecture {
+      color: var(--architecture-text-dark);
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    input,
+    textarea {
+      padding: 0.75rem;
+      border: 1px solid var(--border-color);
+      border-radius: 6px;
+      transition: border-color 0.3s, background-color 0.3s, color 0.3s;
+      font-size: 1rem;
+      font-family: inherit;
+      background-color: #fff;
+      color: var(--text-light);
+    }
+
+    input:focus,
+    textarea:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    body.dark input,
+    body.dark textarea {
+      background-color: #1e293b;
+      color: var(--text-dark);
+      border-color: var(--border-color-dark);
+    }
+
+    button {
+      padding: 0.75rem;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background 0.3s;
+      font-size: 1rem;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #3e3bbf;
+    }
+
+    footer {
+      background: #111;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: auto;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+
+    .toggle-btn {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      border-radius: 6px;
+      transition: background 0.3s;
+      z-index: 1000;
+      font-weight: 600;
+    }
+
+    .toggle-btn:hover {
+      background: #333;
+    }
+
+    /* Skills styling */
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem 1rem;
+      margin-top: 1rem;
+    }
+
+    .skill-badge {
+      background-color: var(--skill-bg);
+      color: var(--skill-text);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-weight: 600;
+      box-shadow: 0 2px 5px rgba(79, 70, 229, 0.2);
+      transition: background-color 0.3s, color 0.3s;
+      user-select: none;
+      white-space: nowrap;
+    }
+
+    .skill-badge:hover {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.4);
+    }
+
+    body.dark .skill-badge {
+      background-color: var(--skill-bg-dark);
+      color: var(--skill-text-dark);
+      box-shadow: 0 2px 5px rgba(79, 70, 229, 0.5);
+    }
+
+    body.dark .skill-badge:hover {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.7);
+    }
+
+    /* Footer social icons */
+    .social-links {
+      margin-top: 0.5rem;
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      align-items: center;
+      font-size: 1.1rem;
+    }
+    .social-links a {
+      color: #fff;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    .social-links svg {
+      fill: currentColor;
+      width: 24px;
+      height: 24px;
+    }
+
+    @media (max-width: 768px) {
+      section {
+        padding: 1rem;
+      }
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      .skills-list {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="document.body.classList.toggle('dark')" aria-label="Toggle dark mode">Toggle Dark Mode</button>
+  <header>
+    <h1>Susai Antony Rosan (Rosan A)</h1>
+    <p>Aspiring Cloud & DevOps Engineer</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Intro</h2>
+      <p>I am a passionate and aspiring Cloud & DevOps engineer with a solid foundation in cloud infrastructure, automation, and deployment pipelines. I enjoy learning new technologies and implementing scalable, secure, and cost-efficient solutions in cloud environments.</p>
+    </section>
+
+    <section>
+      <h2>Education</h2>
+      <ul>
+        <li><strong>UG:</strong> B.Voc SD&SA, St. Joseph's College (Autonomous), Trichy – 8.99 CGPA</li>
+        <li><strong>12th:</strong> Govt. Hr. Sec. School, Kamanaicken Patti – 67%</li>
+        <li><strong>10th:</strong> Don Bosco Hr. Sec. School, Sivagangai – 69%</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Skills</h2>
+      <div class="skills-list" aria-label="List of skills">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">Java</span>
+        <span class="skill-badge">PHP</span>
+        <span class="skill-badge">MySQL</span>
+        <span class="skill-badge">AWS</span>
+        <span class="skill-badge">Linux</span>
+        <span class="skill-badge">Git &amp; GitHub</span>
+        <span class="skill-badge">Docker</span>
+        <span class="skill-badge">Jenkins</span>
+        <span class="skill-badge">Terraform</span>
+        <span class="skill-badge">Kubernetes (learning)</span>
+      </div>
+    </section>
+
+    <section>
+      <h2>Certifications</h2>
+      <ul>
+        <li>AWS Certified Solutions Architect – Udemy</li>
+        <li>Linux Administration – Udemy</li>
+        <li>Python (Basic) – HackerRank</li>
+      </ul>
+    </section>
+
+    <section>
+      <h2>Projects</h2>
+      <div class="project-card">
+        <div class="project-title">
+          Java Based Bill System
+          <a href="https://github.com/Antonyrosan/java-bill-system" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Java Based Bill System Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Academic project built using Java Swing for billing and managing clothing shop inventory.</p>
+        <p class="architecture">Architecture: Desktop client application with local database for inventory management.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Alumni Notification System
+          <a href="https://github.com/Antonyrosan/alumni-notification-system" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Alumni Notification System Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Final year PHP &amp; MySQL project integrated with Firebase to send web push notifications for alumni events.</p>
+        <p class="architecture">Architecture: Web app with backend API and Firebase push notifications.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Database Migration
+          <a href="https://github.com/Antonyrosan/aws-database-migration" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Database Migration Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Migrated on-premises databases to Amazon RDS using AWS DMS.</p>
+        <p class="architecture">Architecture: AWS Database Migration Service for reliable cloud migration.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Deploying a 3-Tier Application on AWS
+          <a href="https://github.com/Antonyrosan/aws-3tier-application" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Deploying a 3-Tier Application Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Configured AWS VPC with high availability and scalability to deploy a 3-tier architecture application.</p>
+        <p class="architecture">Architecture: AWS VPC with public/private subnets, load balancer, and database tier.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          2-Tier Infra Setup using Terraform
+          <a href="https://github.com/Antonyrosan/terraform-2-tier-infra" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="2-Tier Infra Setup Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Provisioned infrastructure using Terraform to automate 2-tier architecture deployment.</p>
+        <p class="architecture">Architecture: Terraform scripts to provision frontend and backend tiers with networking.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Data Migration from GCP to AWS S3
+          <a href="https://github.com/Antonyrosan/aws-data-migration" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Data Migration Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Used AWS DataSync to transfer data from Google Cloud Platform to Amazon S3.</p>
+        <p class="architecture">Architecture: DataSync agent orchestrating data transfer from GCP bucket to AWS S3 bucket.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Complete CI/CD using Jenkins
+          <a href="https://github.com/Antonyrosan/jenkins-cicd-pipeline" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Complete CI/CD using Jenkins Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Built and deployed full CI/CD pipeline using Jenkins on AWS EC2 instances.</p>
+        <p class="architecture">Architecture: Jenkins master-agent pipeline automating build, test, and deploy phases.</p>
+      </div>
+
+      <div class="project-card">
+        <div class="project-title">
+          Deploying an App on Kubernetes
+          <a href="https://github.com/Antonyrosan/kubernetes-deployment" title="View Source Code on GitHub" target="_blank" rel="noopener" aria-label="Deploying an App on Kubernetes Source Code">
+            <svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <title>GitHub</title>
+              <path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+        </div>
+        <p>Containerized and deployed applications on a Kubernetes cluster.</p>
+        <p class="architecture">Architecture: Multi-pod Kubernetes deployment managed by YAML manifests and Helm charts.</p>
+      </div>
+    </section>
+
+    <section>
+      <h2>Contact Me</h2>
+      <form action="mailto:antonyrosan103@gmail.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your Name" required />
+        <input type="email" name="email" placeholder="Your Email" required />
+        <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2025 Susai Antony Rosan (Rosan A)</p>
+    <p>📞 +91 8870064820 | 📧 antonyrosan103@gmail.com</p>
+    <div class="social-links" aria-label="Social media links">
+      <a href="https://github.com/Antonyrosan" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><title>GitHub</title><path d="M12 0C5.37 0 0 5.373 0 12a12.01 12.01 0 008.21 11.44c.6.11.82-.26.82-.58v-2.03c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.36-1.77-1.36-1.77-1.11-.76.08-.75.08-.75 1.22.08 1.86 1.25 1.86 1.25 1.09 1.87 2.86 1.33 3.56 1.02.11-.79.43-1.33.78-1.64-2.67-.3-5.47-1.33-5.47-5.93a4.64 4.64 0 011.24-3.23 4.31 4.31 0 01.12-3.18s1-.32 3.3 1.23a11.42 11.42 0 016 0c2.3-1.55 3.3-1.23 3.3-1.23a4.31 4.31 0 01.12 3.18 4.64 4.64 0 011.24 3.23c0 4.61-2.8 5.62-5.48 5.92.44.38.84 1.13.84 2.28v3.38c0 .32.22.7.82.58A12.01 12.01 0 0024 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://linkedin.com/in/antontrosan" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><title>LinkedIn</title><path d="M20.452 20.452h-3.554v-5.569c0-1.328-.026-3.036-1.849-3.036-1.85 0-2.133 1.444-2.133 2.938v5.667h-3.554v-11.45h3.413v1.562h.046c.476-.9 1.633-1.849 3.358-1.849 3.594 0 4.258 2.364 4.258 5.438v6.299zm-14.452-13.034c-1.142 0-2.07-.927-2.07-2.07 0-1.142.928-2.07 2.07-2.07 1.144 0 2.07.928 2.07 2.07 0 1.143-.926 2.07-2.07 2.07zm1.777 13.034h-3.554v-11.451h3.554v11.451zm16.158-22.452h-20.452c-1.062 0-1.926.864-1.926 1.925v20.15c0 1.061.864 1.926 1.925 1.926h20.452c1.061 0 1.926-.865 1.926-1.926v-20.15c0-1.061-.865-1.925-1.926-1.925z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+  </footer>
+</body>
+</html>
+
